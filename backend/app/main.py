@@ -6,18 +6,10 @@ from .email_service import send_service_request_email
 
 app = FastAPI(title="Food Safety Service API")
 
-# Adjust origins if you deploy with a different URL
-origins = [
-    "http://localhost:5500",  # example if serving static files with Live Server
-    "http://localhost:8000",
-    "http://127.0.0.1:5500",
-    "http://127.0.0.1:8000",
-    # Add your production domain here when you have one
-]
-
+# Allow all origins during development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,9 +23,12 @@ def health_check():
 
 @app.post("/request-service")
 def create_service_request(request: ServiceRequest):
+    print("📥 Received service request:", request)
+
     try:
         send_service_request_email(request)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to send email: {e}")
+        print("❌ Backend error:", e)
+        raise HTTPException(status_code=500, detail=f"Email failed: {e}")
 
     return {"message": "Service request submitted successfully"}

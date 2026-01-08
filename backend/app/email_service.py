@@ -11,19 +11,26 @@ def send_service_request_email(request: ServiceRequest) -> None:
     Sends an email notification to the service provider
     when a new service request is submitted.
     """
-    if not settings.EMAIL_SENDER or not settings.EMAIL_PASSWORD:
-        raise RuntimeError("Email sender or password not configured in environment variables")
+
+    print("📨 Preparing email...")  # DEBUG LOG
 
     sender_email = settings.EMAIL_SENDER
+    app_password = settings.EMAIL_PASSWORD
     recipient_email = settings.EMAIL_RECIPIENT
+
+    if not sender_email or not app_password:
+        raise RuntimeError("Email sender or password missing in .env")
 
     subject = "New Food Safety Service Request"
     body = (
-        f"A new service request has been submitted:\n\n"
+        f"New service request submitted:\n\n"
         f"Name: {request.name}\n"
         f"Phone: {request.phone}\n"
-        f"Message: {request.message or 'No additional message provided.'}\n"
+        f"Message: {request.message or 'No message provided'}\n"
     )
+
+    print("📧 Email body:")
+    print(body)
 
     msg = MIMEMultipart()
     msg["From"] = sender_email
@@ -32,7 +39,16 @@ def send_service_request_email(request: ServiceRequest) -> None:
 
     msg.attach(MIMEText(body, "plain"))
 
-    with smtplib.SMTP(settings.SMTP_SERVER, settings.SMTP_PORT) as server:
-        server.starttls()
-        server.login(settings.EMAIL_SENDER, settings.EMAIL_PASSWORD)
-        server.send_message(msg)
+    try:
+        print("🔌 Connecting to Gmail SMTP...")
+        with smtplib.SMTP(settings.SMTP_SERVER, settings.SMTP_PORT) as server:
+            server.starttls()
+            print("🔐 Logging in...")
+            server.login(sender_email, app_password)
+            print("📤 Sending email...")
+            server.send_message(msg)
+            print("✅ Email sent successfully!")
+
+    except Exception as e:
+        print("❌ ERROR sending email:", e)
+        raise
