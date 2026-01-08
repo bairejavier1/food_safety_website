@@ -1,28 +1,22 @@
 const form = document.getElementById("serviceForm");
-const status = document.getElementById("status");
+const modal = document.getElementById("successModal");
 
 form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const data = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value
-    };
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
 
-    try {
-        const response = await fetch("http://127.0.0.1:8000/request-service", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+  await fetch("http://127.0.0.1:5000/request-service", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, phone })
+  });
 
-        const result = await response.json();
-        status.textContent = result.message;
-        status.style.color = "green";
-    } catch (error) {
-        status.textContent = "Error sending request.";
-        status.style.color = "red";
-    }
+  form.reset();
+  modal.style.display = "flex";
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 4000);
 });

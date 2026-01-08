@@ -1,29 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Food Safety Awareness</title>
-    <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Food Safety Awareness</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">
+        <span class="logo-icon">🍽️</span>
+        <span class="logo-text">Food Safety Awareness</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#tips">Safety Tips</a>
+        <a href="#contact">Contact</a>
+        <a href="#request-service" class="btn-primary small-btn">Request Service</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-    <h1>Food Safety Awareness</h1>
-    <p>Protecting health through safe food practices</p>
-</header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Food Safety Awareness</h1>
+        <p class="hero-subtitle">
+          Protecting health through safe food practices.
+        </p>
+        <p class="hero-description">
+          Learn how proper food handling, storage, and preparation can prevent foodborne illnesses
+          and keep your community safe.
+        </p>
+        <div class="hero-actions">
+          <a href="#tips" class="btn-primary">View Safety Tips</a>
+          <a href="#request-service" class="btn-secondary">Request Service</a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img
+          src="assets/images/food-hero.jpg"
+          alt="Fresh vegetables on a table"
+          class="hero-image"
+        />
+      </div>
+    </div>
+  </section>
 
-<section>
-    <h2>Request a Service</h2>
+  <!-- Why Food Safety Matters -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>Why Food Safety Matters</h2>
+      <p class="section-text">
+        Food safety is essential to prevent foodborne illnesses and protect public health.
+        By following simple hygiene and cooking practices, we can reduce risks and ensure
+        safe meals for everyone.
+      </p>
+    </div>
+  </section>
 
-    <form id="serviceForm">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="tel" id="phone" placeholder="Phone Number" required />
-        <button type="submit">Request Service</button>
-    </form>
+  <!-- Top Food Safety Tips -->
+  <section id="tips" class="section section-light">
+    <div class="container">
+      <h2>Top Food Safety Tips</h2>
 
-    <p id="status"></p>
-</section>
+      <div class="card-grid">
+        <article class="info-card">
+          <div class="card-icon">🧼</div>
+          <h3>Wash Hands</h3>
+          <p>
+            Always wash your hands before handling food to prevent contamination and stop the spread of germs.
+          </p>
+        </article>
 
-<script src="js/script.js"></script>
+        <article class="info-card">
+          <div class="card-icon">🍖</div>
+          <h3>Cook Thoroughly</h3>
+          <p>
+            Ensure meat, poultry, and seafood are cooked to safe internal temperatures to kill harmful bacteria.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-icon">❄️</div>
+          <h3>Keep It Cool</h3>
+          <p>
+            Refrigerate perishable foods promptly and keep your fridge below 40°F to slow bacterial growth.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-icon">🍽️</div>
+          <h3>Separate Foods</h3>
+          <p>
+            Use different cutting boards for raw meat and fresh produce to avoid cross-contamination.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request Service Section -->
+  <section id="request-service" class="section">
+    <div class="container request-grid">
+      <div class="request-text">
+        <h2>Request Food Safety Services</h2>
+        <p class="section-text">
+          Need help with inspections, training, or food safety consulting? Submit your details and
+          a certified food safety professional will reach out to you as soon as possible.
+        </p>
+        <ul class="request-list">
+          <li><strong>Restaurants & Cafés:</strong> Audits and staff training</li>
+          <li><strong>Events & Catering:</strong> Temporary setups and safe serving</li>
+          <li><strong>Small Businesses:</strong> Compliance and best practices</li>
+        </ul>
+      </div>
+
+      <div class="request-form-card">
+        <h3>Request Service</h3>
+        <form id="service-request-form">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your full name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Your phone number"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Additional Details (optional)</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Tell us briefly about your needs"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary full-width">
+            Submit Request
+          </button>
+          <p id="form-error" class="form-error"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section section-light">
+    <div class="container contact-container">
+      <div>
+        <h2>Contact Us</h2>
+        <p class="section-text">
+          Have questions about food safety or our services?
+          We are here to help.
+        </p>
+        <p class="contact-email">
+          Email us at:
+          <a href="mailto:info@foodsafety.org">info@foodsafety.org</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="year"></span> Food Safety Awareness. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="modal-overlay">
+    <div class="modal-content success-modal">
+      <h3>Request Submitted</h3>
+      <p>
+        Hi, thanks so much for submitting your request, will get back to you as soon as possible.
+        Have a wonderful day ☀️
+      </p>
+      <button id="close-modal-btn" class="btn-primary">Close</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
