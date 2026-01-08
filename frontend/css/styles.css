@@ -1,0 +1,132 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* GLOBAL */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER / FOOD SAFETY */
+header {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.55)
+    ),
+    url("../assets/images/food_safety.png");
+    /* Make the image fit inside the header instead of filling/cropping it */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* reduce header height so the image doesn't take up too much vertical space */
+    height: 50vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* SECTION */
+section {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #2e8b57;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background-color: #256f46;
+}
+
+/* STATUS MESSAGE */
+#status {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 80px;
+    padding: 20px;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+    /* Reduce hero height on small screens so it doesn't overwhelm the viewport */
+    header {
+        height: 35vh;
+        background-size: contain;
+    }
+}
